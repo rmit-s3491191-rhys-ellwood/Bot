@@ -1261,7 +1261,7 @@
               <?php endforeach; ?>
               </table>
             </h2>
-            <p><br>* indentifies if the particular size will be purchable on release</p>
+            <p><br>* identifies if the particular size will be purchasable on release</p>
           <?php else: ?>
           <!-- Something not working so we let the end user know -->
             <h2>Chicken Butt!</h2>
