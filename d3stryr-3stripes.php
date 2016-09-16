@@ -1264,8 +1264,17 @@
             <p><br>* indentifies if the particular size will be purchable on release</p>
           <?php else: ?>
           <!-- Something not working so we let the end user know -->
-          <h2><?php echo $exceptionType; ?></h2>
-          <h1><center>Chicken Butt<center></h1>
+            <h2>Chicken Butt!</h2>
+            <p>How you could have ended up here?</p>
+            <ul>
+              <li><p>Did you refresh the main page so that COOKIES would stick?</p></li>
+              <li><p>Did you supply a valid SKU?</p></li>
+              <li><p>If the SKU is valid is the product expected to be live at this moment?</p></li>
+              <li><p>Is the SKU valid for the current locale (region/country) you are on?</p></li>
+              <li><p>Many have successfully ran the bot but you - could you it just be you?</p></li>
+              <li><p>What does the exception say below?</p></li>
+              <h2><font color="red"><?php echo $exceptionType; ?></font></h2>
+            </ul>
           <?php endif; ?> <!-- Finish handling POST request -->
 
         <?php else: ?> <!-- Load main php page options with values from cookies-->
@@ -1310,9 +1319,10 @@
               <td valign="top">
                 <form action="/d3stryr-3stripes.php" method="post">
                   <fieldset>
-                    <h2>Captcha SITE-KEY<br>
-                      <input type="text" size="50" value="<?php echo $sitekey; ?>" name="gsk" id="gsk"/>
+                    <h2>Current Captcha SITE-KEY<br>
+                      <input type="hidden" size="50" value="<?php echo $sitekey; ?>" name="gsk" id="gsk"/>
                     </h2>
+                    <pre><?php echo $sitekey; ?></pre>
                     <h2>Google  Captcha<br>
                       <div class="g-recaptcha" data-sitekey="<?php echo $sitekey; ?>"></div>
                       <script type="text/javascript" src="https://www.google.com/recaptcha/api.js"></script>
