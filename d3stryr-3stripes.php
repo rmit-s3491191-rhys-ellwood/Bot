@@ -286,7 +286,9 @@
       echo"        <table>"."\n";
       echo"          <tr>"."\n";
       echo"            <th id='headers'>Product Id</th>"."\n";
+/*
       echo"            <th id='headers'>Current<br>Stock</th>"."\n";
+*/
       echo"            <th id='headers'>Client<br>Stock</th>"."\n";
       echo"            <th id='headers'>Size<br>(US)</th>"."\n";
       echo"            <th id='headers'>ATC<br><br>"."\n";
@@ -344,6 +346,7 @@
       echo"            <td>"."\n";
       echo"                " . $pid ."\n";
       echo"            </td>"."\n";
+/*
                       if (@$stockCount[$pid] > 0)
                       {
       echo"                <td><center><b><font color='green'>" . @$stockCount[$pid] . "</font></b></center></td>"."\n";
@@ -352,6 +355,7 @@
                       {
       echo"                <td><center><b><font color='red'>" . @$stockCount[$pid] . "</font></b></center></td>"."\n";
                       }
+*/
                       if (@$clientCount[$pid] > 0)
                       {
       echo"                <td><center><b><font color='green'>" . @$clientCount[$pid] . "</font></b></center></td>"."\n";
@@ -509,8 +513,6 @@
           $response = curl_exec($curl) or die(curl_error($curl));
 
           $JSON=(json_decode($response,true));
-
-          debugPrint(print_r($JSON));
 
           foreach($JSON["variations"]["variants"] as $variant)
           {
@@ -727,7 +729,7 @@
                   <option value="Yes">Yes</option>
                   <option value="No" selected="selected">No</option>
                 <?php endif; ?>
-              </select>
+              </select><font color="red"> Do not change!</font>
             </td>
           </tr>
           <tr>
@@ -741,7 +743,7 @@
                   <option value="Yes">Yes</option>
                   <option value="No" selected="selected">No</option>
                 <?php endif; ?>
-              </select>
+              </select><font color="red"> Do not change!</font>
             </td>
           </tr>
           <tr>
@@ -851,7 +853,7 @@
               </p>
             </fieldset>
             <fieldset>
-              <p align="center"><font color="blue">Revision 30</font></p>
+              <p align="center"><font color="blue">Revision 31</font></p>
             </fieldset>
           </td>
           <td width="50%">
