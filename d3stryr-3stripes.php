@@ -853,7 +853,7 @@
               </p>
             </fieldset>
             <fieldset>
-              <p align="center"><font color="blue">Revision 31</font></p>
+              <p align="center"><font color="blue">Revision 32</font></p>
             </fieldset>
           </td>
           <td width="50%">
@@ -1649,4 +1649,4 @@ Step 13)
 http://dev.adidas.ru:8000/d3stryr-3stripes.php
 
 -->
-<!-- Revision 30 -->
+<!-- Revision 32 -->
