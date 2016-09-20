@@ -369,7 +369,7 @@
                       $payload="layer=Add+To+Bag+overlay&pid=".$pid."&Quantit=1&masterPid=".$productMasterId."&ajax=true";
                       if (strlen($gcaptcha) > 0)
                       {
-                        $payload=$payload."&g-recaptcha-response=".$gcaptcha."&x-PrdRtt=".$gcaptcha;
+                        $payload=$payload."&g-recaptcha-response=".$gcaptcha."&x-PrdRt=".$gcaptcha;
                       }
                       $variantATCURL=$atcURL."?".$payload;
       echo"              <a href='" . $variantATCURL. "' target='_blank'>"."\n";
@@ -380,7 +380,7 @@
                       $payload="layer=Add+To+Bag+overlay&pid=".$pid."&Quantit=1&masterPid=".$productMasterId."&ajax=true";
                       if (strlen($gcaptcha) > 0)
                       {
-                        $payload="clientId=".$clientId."&".$payload."&g-recaptcha-response=".$gcaptcha."&x-PrdRtt=".$gcaptcha;
+                        $payload="clientId=".$clientId."&".$payload."&g-recaptcha-response=".$gcaptcha."&x-PrdRt=".$gcaptcha;
                       }
                       else
                       {
@@ -392,6 +392,7 @@
       echo"              </a>"."\n";
       echo"            </td>"."\n";
       echo"            <form target='_blank' action='/d3stryr-3stripes-atc-cs.php' method='post'>"."\n";
+//    echo"            <form action='/d3stryr-3stripes-atc-cs.php' method='post'>"."\n";
       echo"              <td valign='middle' align='center'>"."\n";
       echo"                <input type='hidden' value='" . $clientId. "' name='clientId' id='clientId'/>"."\n";
       echo"                <input type='hidden' value='" . $locale. "' name='locale' id='locale'/>"."\n";
@@ -853,7 +854,7 @@
               </p>
             </fieldset>
             <fieldset>
-              <p align="center"><font color="blue">Revision 32</font></p>
+              <p align="center"><font color="blue">Revision 33</font></p>
             </fieldset>
           </td>
           <td width="50%">
@@ -1648,5 +1649,31 @@ Step 13)
 
 http://dev.adidas.ru:8000/d3stryr-3stripes.php
 
+If you want add all locales:
+
+echo '127.0.0.1 dev.adidas.at'     | sudo tee -a /etc/hosts > /dev/null && echo DONE dev.adidas.at
+echo '127.0.0.1 dev.adidas.com.au' | sudo tee -a /etc/hosts > /dev/null && echo DONE dev.adidas.com.au
+echo '127.0.0.1 dev.adidas.be'     | sudo tee -a /etc/hosts > /dev/null && echo DONE dev.adidas.be
+echo '127.0.0.1 dev.adidas.com.br' | sudo tee -a /etc/hosts > /dev/null && echo DONE dev.adidas.com.br
+echo '127.0.0.1 dev.adidas.ca'     | sudo tee -a /etc/hosts > /dev/null && echo DONE dev.adidas.ca
+echo '127.0.0.1 dev.adidas.cl'     | sudo tee -a /etc/hosts > /dev/null && echo DONE dev.adidas.cl
+echo '127.0.0.1 dev.adidas.co'     | sudo tee -a /etc/hosts > /dev/null && echo DONE dev.adidas.co
+echo '127.0.0.1 dev.adidas.cz'     | sudo tee -a /etc/hosts > /dev/null && echo DONE dev.adidas.cz
+echo '127.0.0.1 dev.adidas.de'     | sudo tee -a /etc/hosts > /dev/null && echo DONE dev.adidas.de
+echo '127.0.0.1 dev.adidas.dk'     | sudo tee -a /etc/hosts > /dev/null && echo DONE dev.adidas.dk
+echo '127.0.0.1 dev.adidas.es'     | sudo tee -a /etc/hosts > /dev/null && echo DONE dev.adidas.es
+echo '127.0.0.1 dev.adidas.fi'     | sudo tee -a /etc/hosts > /dev/null && echo DONE dev.adidas.fi
+echo '127.0.0.1 dev.adidas.fr'     | sudo tee -a /etc/hosts > /dev/null && echo DONE dev.adidas.fr
+echo '127.0.0.1 dev.adidas.ie'     | sudo tee -a /etc/hosts > /dev/null && echo DONE dev.adidas.ie
+echo '127.0.0.1 dev.adidas.it'     | sudo tee -a /etc/hosts > /dev/null && echo DONE dev.adidas.it
+echo '127.0.0.1 dev.adidas.mx'     | sudo tee -a /etc/hosts > /dev/null && echo DONE dev.adidas.mx
+echo '127.0.0.1 dev.adidas.nl'     | sudo tee -a /etc/hosts > /dev/null && echo DONE dev.adidas.nl
+echo '127.0.0.1 dev.adidas.co.nz'  | sudo tee -a /etc/hosts > /dev/null && echo DONE dev.adidas.co.nz
+echo '127.0.0.1 dev.adidas.pl'     | sudo tee -a /etc/hosts > /dev/null && echo DONE dev.adidas.pl
+echo '127.0.0.1 dev.adidas.ru'     | sudo tee -a /etc/hosts > /dev/null && echo DONE dev.adidas.ru
+echo '127.0.0.1 dev.adidas.se'     | sudo tee -a /etc/hosts > /dev/null && echo DONE dev.adidas.se
+echo '127.0.0.1 dev.adidas.sk'     | sudo tee -a /etc/hosts > /dev/null && echo DONE dev.adidas.sk
+echo '127.0.0.1 dev.adidas.co.uk'  | sudo tee -a /etc/hosts > /dev/null && echo DONE dev.adidas.co.uk
+
 -->
-<!-- Revision 32 -->
+<!-- Revision 33 -->
