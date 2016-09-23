@@ -366,7 +366,7 @@
                       }
       echo"            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $size . "</td>"."\n";
       echo"            <td align='center'>"."\n";
-                      $payload="layer=Add+To+Bag+overlay&pid=".$pid."&Quantit=1&masterPid=".$productMasterId."&ajax=true";
+                      $payload="layer=Add+To+Bag+overlay&pid=".$pid."&Quantity=1&masterPid=".$productMasterId."&ajax=true";
                       if (strlen($gcaptcha) > 0)
                       {
                         $payload=$payload."&g-recaptcha-response=".$gcaptcha."&x-PrdRt=".$gcaptcha;
@@ -377,7 +377,7 @@
       echo"              </a>"."\n";
       echo"            </td>"."\n";
       echo"            <td align='center'>"."\n";
-                      $payload="layer=Add+To+Bag+overlay&pid=".$pid."&Quantit=1&masterPid=".$productMasterId."&ajax=true";
+                      $payload="layer=Add+To+Bag+overlay&pid=".$pid."&Quantity=1&masterPid=".$productMasterId."&ajax=true";
                       if (strlen($gcaptcha) > 0)
                       {
                         $payload="clientId=".$clientId."&".$payload."&g-recaptcha-response=".$gcaptcha."&x-PrdRt=".$gcaptcha;
@@ -854,7 +854,7 @@
               </p>
             </fieldset>
             <fieldset>
-              <p align="center"><font color="blue">Revision 33</font></p>
+              <p align="center"><font color="blue">Revision 34</font></p>
             </fieldset>
           </td>
           <td width="50%">
@@ -1676,4 +1676,4 @@ echo '127.0.0.1 dev.adidas.sk'     | sudo tee -a /etc/hosts > /dev/null && echo 
 echo '127.0.0.1 dev.adidas.co.uk'  | sudo tee -a /etc/hosts > /dev/null && echo DONE dev.adidas.co.uk
 
 -->
-<!-- Revision 33 -->
+<!-- Revision 34 -->
