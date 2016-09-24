@@ -178,10 +178,14 @@
     $marketDomainList["US"]="adidas.com";
 
     $sizes=[];
+    $readableSizes=[];
 
-    for ($x = 500; $x <= 810; $x=$x+10)
+    $currentSize=4;
+    for ($x = 530; $x <= 810; $x=$x+10)
     {
       array_push($sizes, $x);
+      $readableSizes[$x]=$currentSize;
+      $currentSize=$currentSize+0.5;
     }
 
     function debugPrint($string)
@@ -193,6 +197,8 @@
 
     function printInventoryTable($sku,$clientId,$sitekey,$locale,$productMasterId,$productName,$productCollection,$productColor,$productInventory,$productPrice,$clientSizes,$clientCount,$stockSizes,$stockCount,$atcURL,$timer)
     {
+      global $sizes;
+      global $readableSizes;
       echo"      <h2>"."\n";
       echo"        <table>"."\n";
       echo"          <tr>"."\n";
@@ -274,6 +280,7 @@
                            if ($timer)
                            {
       echo"                  Token will expire at <font color='red'><script>document.write(getCookie('captchaExpiration'));</script></font>"."\n";
+      echo"                  <br>You can only use it for a single ATC click."."\n";
                            }
       echo"                </h2>"."\n";
       echo"              </fieldset>"."\n";
@@ -339,7 +346,17 @@
                     {
                       $sizeIterator=$clientSizes;
                     }
+                    if ((sizeof($clientSizes) == 0) &&  (sizeof($stockSizes) == 0))
+                    {
+                      foreach($sizes as $size)
+                      {
+                        $sizeIterator[$sku."_".$size]=$size;
+                      }
+                    }
       echo""."\n";
+
+
+
                     foreach($sizeIterator as $pid=>$size)
                     {
       echo"          <tr>"."\n";
@@ -356,6 +373,11 @@
       echo"                <td><center><b><font color='red'>" . @$stockCount[$pid] . "</font></b></center></td>"."\n";
                       }
 */
+                      if (!isset($clientCount[$pid]))
+                      {
+                        $clientCount[$pid]="Unknown";
+                        $size=$readableSizes[$size];
+                      }
                       if (@$clientCount[$pid] > 0)
                       {
       echo"                <td><center><b><font color='green'>" . @$clientCount[$pid] . "</font></b></center></td>"."\n";
@@ -366,7 +388,7 @@
                       }
       echo"            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $size . "</td>"."\n";
       echo"            <td align='center'>"."\n";
-                      $payload="layer=Add+To+Bag+overlay&pid=".$pid."&Quantity=1&masterPid=".$productMasterId."&ajax=true";
+                      $payload="layer=Add+To+Bag+overlay&pid=".$pid."&Quantity=1&masterPid=".$sku."&ajax=true";
                       if (strlen($gcaptcha) > 0)
                       {
                         $payload=$payload."&g-recaptcha-response=".$gcaptcha."&x-PrdRt=".$gcaptcha;
@@ -377,7 +399,7 @@
       echo"              </a>"."\n";
       echo"            </td>"."\n";
       echo"            <td align='center'>"."\n";
-                      $payload="layer=Add+To+Bag+overlay&pid=".$pid."&Quantity=1&masterPid=".$productMasterId."&ajax=true";
+                      $payload="layer=Add+To+Bag+overlay&pid=".$pid."&Quantity=1&masterPid=".$sku."&ajax=true";
                       if (strlen($gcaptcha) > 0)
                       {
                         $payload="clientId=".$clientId."&".$payload."&g-recaptcha-response=".$gcaptcha."&x-PrdRt=".$gcaptcha;
@@ -398,7 +420,7 @@
       echo"                <input type='hidden' value='" . $locale. "' name='locale' id='locale'/>"."\n";
       echo"                <input type='hidden' value='" . $gcaptcha. "' name='gcaptcha' id='gcaptcha'/>"."\n";
       echo"                <input type='hidden' value='" . $pid. "' name='pid' id='pid'/>"."\n";
-      echo"                <input type='hidden' value='" . $productMasterId. "' name='masterPid' id='masterPid'/>"."\n";
+      echo"                <input type='hidden' value='" . $sku. "' name='masterPid' id='masterPid'/>"."\n";
       echo"                <input type='hidden' value='True' name='atcPostContinueShopping' id='atcPostContinueShopping'/>"."\n";
       echo"                <button type='submit' value='" . $pid. "' name='submit' id='submit'>" . $pid . "</button>"."\n";
       echo"              </td>"."\n";
@@ -768,13 +790,24 @@
               <p>S31507 - Soler Red NMD R1<br>
                  S31508 - Core Black NMD R1<br>
                  S32211 - Core Black XR1 PK<br>
-                 BB1826 - Boost 350 V2<br><br>
-                 Previous Yeezy (Cleats) Site Key:</p>
+                 BB1826 - Boost 350 V2<br><br></p>
+              <p>Previous Yeezy (AU) Site Key:</p>
+              <pre><?php echo "6LfmqykTAAAAAPkpAt5T"; ?><?php echo "NBSeZl81VlbRl7pZpM9m"; ?></pre>
+              <p>Previous Yeezy (Cleats) Site Key:</p>
               <pre><?php echo "6Lc9EyoTAAAAABWz8VUqQ-"; ?><?php echo "0_N9mZ9-y9ZXCS1Rf6"; ?></pre>
+              <p>Previous Yeezy (AU) ClientId:</p>
+              <pre><?php echo "75e396c6-5589-"; ?><?php echo "425b-be03-774c21a74702"; ?></pre>
               <p>Bookmarklet for sitekey retrieve</p>
               <pre>
       javascript:(function(){
         alert($(".g-recaptcha").attr("data-sitekey")); }
+      )();
+                    </pre>
+              <p>Bookmarklet for clientId retrieve</p>
+              <pre>
+      javascript:(function(){
+        var clientId=/clientId=[A-Za-z0-9\-]+/.exec(document.documentElement.innerHTML);
+        alert(clientId[0]); }
       )();
                     </pre>
             </td>
@@ -854,7 +887,7 @@
               </p>
             </fieldset>
             <fieldset>
-              <p align="center"><font color="blue">Revision 34</font></p>
+              <p align="center"><font color="blue">Revision 35</font></p>
             </fieldset>
           </td>
           <td width="50%">
@@ -1676,4 +1709,4 @@ echo '127.0.0.1 dev.adidas.sk'     | sudo tee -a /etc/hosts > /dev/null && echo 
 echo '127.0.0.1 dev.adidas.co.uk'  | sudo tee -a /etc/hosts > /dev/null && echo DONE dev.adidas.co.uk
 
 -->
-<!-- Revision 34 -->
+<!-- Revision 35 -->
